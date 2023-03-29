@@ -51,4 +51,8 @@ resource "google_cloudbuild_trigger" "web_new_build" {
     repo_name = google_sourcerepo_repository.default.name
     branch_name = "main"
   }
+  substitutions = {
+    _AR_REPO =  "${google_artifact_registry_repository.default.location}-docker.pkg.dev/${google_artifact_registry_repository.default.project}/${google_artifact_registry_repository.default.name}/app"
+  }
 }
+

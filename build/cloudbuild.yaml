@@ -15,16 +15,14 @@
 
 steps:
   - name: gcr.io/cloud-builders/docker
-    entrypoint: /bin/bash
     args: 
-      - '-c'
-      - |
-        docker build -t \
-        ${_AR_REPO}:${_IMAGE_TAG} .
+      - 'build'
+      - '-t'
+      - '${_AR_REPO}:${_IMAGE_TAG}'
+      - '.'
 substitutions:
   _REGION: us-west1
   _IMAGE_TAG: $SHORT_SHA
-  _AR_REPO: ${_REGION}-docker.pkg.dev/${PROJECT_ID}/dev-journey-repo/app
 
 # Store in Artifact Registry
 images:
