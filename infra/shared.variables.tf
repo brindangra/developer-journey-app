@@ -14,14 +14,31 @@
  * limitations under the License.
  */
 
-variable "enable_apis" {
+variable "project_id" {
   type        = string
-  description = "Whether or not to enable underlying apis in this solution."
-  default     = true
+  description = "The project ID to deploy resources to."
 }
 
-variable "initial_run_image" {
+variable "labels" {
+  type        = map(string)
+  description = "A set of key/value label pairs to assign to the resources deployed by this solution."
+  default     = {}
+}
+
+variable "deployment_name" {
   type        = string
-  description = "Initial image to deploy to Cloud Run service."
-  default     = "us-docker.pkg.dev/cloudrun/container/hello"
+  description = "Identifier for the deployment. Used in some resource names."
+  default     = "dev-journey"
+}
+
+variable "region" {
+  type        = string
+  default     = "us-west1"
+  description = "Google Cloud region"
+}
+
+variable "zone" {
+  type        = string
+  default     = "us-west1-a"
+  description = "Google Cloud zone"
 }
