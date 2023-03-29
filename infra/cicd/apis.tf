@@ -24,6 +24,14 @@ module "project_services" {
 
   activate_apis = [
     "artifactregistry.googleapis.com",
-    "sourcerepo.googleapis.com" #add delay
+    "sourcerepo.googleapis.com"
   ]
+}
+
+resource "time_sleep" "wait_30_seconds" {
+  depends_on = [
+    module.project_services
+  ]
+
+  create_duration = "30s"
 }

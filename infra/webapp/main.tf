@@ -285,16 +285,3 @@ resource "google_firestore_database" "database" {
     time_sleep.wait_30_seconds
   ]
 }
-
-### Artifact Registry ###
-resource "google_artifact_registry_repository" "default" {
-  project       = var.project_id
-  location      = var.region
-  repository_id = "${var.deployment_name}-repo"
-  description   = "Dev journey artifact registry repo."
-  format        = "DOCKER"
-  labels        = var.labels
-  depends_on = [
-    time_sleep.wait_30_seconds
-  ]
-}

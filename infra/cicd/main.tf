@@ -15,16 +15,29 @@
  */
 
 
-# cloud source repo
+# Cloud Source Repo
 resource "google_sourcerepo_repository" "default" {
   project = var.project_id
   name = var.deployment_name
+  depends_on = [
+    time_sleep.wait_30_seconds
+  ]
 }
 
-# artifact registry
+### Artifact Registry ###
+resource "google_artifact_registry_repository" "default" {
+  project       = var.project_id
+  location      = var.region
+  repository_id = "${var.deployment_name}-repo"
+  description   = "Dev journey artifact registry repo."
+  format        = "DOCKER"
+  labels        = var.labels
+  depends_on = [
+    time_sleep.wait_30_seconds
+  ]
+}
 
-
-# cloud build trigger
+# Cloud Build Trigger
 
 resource "google_cloudbuild_trigger" "web_new_build" {
   project     = var.project_id
