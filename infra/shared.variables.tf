@@ -19,6 +19,12 @@ variable "project_id" {
   description = "The project ID to deploy resources to."
 }
 
+variable "enable_apis" {
+  type        = string
+  description = "Whether or not to enable underlying apis in this solution."
+  default     = true
+}
+
 variable "labels" {
   type        = map(string)
   description = "A set of key/value label pairs to assign to the resources deployed by this solution."
