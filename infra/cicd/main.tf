@@ -17,6 +17,7 @@
 
 # cloud source repo
 resource "google_sourcerepo_repository" "default" {
+  project = var.project_id
   name = var.deployment_name
 }
 
@@ -25,3 +26,16 @@ resource "google_sourcerepo_repository" "default" {
 
 # cloud build trigger
 
+resource "google_cloudbuild_trigger" "web_new_build" {
+  project     = var.project_id
+  name        = "web-new-build"
+  filename    = "build/cloudbuild.yaml"
+  description = "Triggers on every change to main branch in website directory. Initiates website image build."
+  included_files = [
+    "src/*",
+  ]
+  trigger_template {
+    repo_name = google_sourcerepo_repository.default.name
+    branch_name = "main"
+  }
+}
