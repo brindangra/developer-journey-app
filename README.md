@@ -186,6 +186,65 @@ TODO
 
 https://console.cloud.google.com/firestore/databases/-default-/data/panel
 
+## Deploy this app to Google Cloud
+
+You can deploy this application to Google Cloud using the Terraform 
+configuration hosted on 
+[GoogleCloudPlatform/terraform-dynamic-webapp](https://github.com/GoogleCloudPlatform/terraform-dynamic-javascript-webapp). 
+There are two ways to do that:
+
+### 1. Google Cloud Solutions Catalog
+
+The Google Cloud Solutions Catalog offers one-click deployments of Jump Start 
+Solutions. The 
+[dynamic JavaScript webapp](https://console.cloud.google.com/products/solutions/details/dynamic-web-app) 
+solution will deploy the following resources with the latest build of the 
+Developer Journey application:
+
+- Cloud Run service
+- HTTP loadbalancer with an ephemeral IP address
+- A Firestore database
+- A Google Cloud Storage bucket
+
+### 2. Deploy using Terraform
+
+ 1. Clone the 
+[GoogleCloudPlatform/terraform-dynamic-webapp](https://github.com/GoogleCloudPlatform/terraform-dynamic-javascript-webapp) 
+repo and change your current working directory to the repo's `infra` directory:
+    ```
+    git clone https://github.com/GoogleCloudPlatform/terraform-dynamic-javascript-webapp.git && \
+    cd terraform-dynamic-javascript-webapp/infra
+    ```
+ 2. Run terraform init and plan
+ 3. Run terraform apply 
+
+## Deploying CICD pipeline
+
+In order to setup and explore a CICD pipeline, first make sure to [deploy this app to Google Cloud](#deploy-this-app-to-google-cloud)
+
+1. Fork this repo
+The CICD pipeline demonstrated with this application requires that you connect a
+GitHub repository to the Google Cloud project you deployed your infrastructure
+to.  Follow instructions for forking a repo 
+[here](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository). 
+
+2. Deploy resources using Terraform
+
+From the `infra/environments/prod` directory of your forked project, deploy 
+resources using terraform:
+```
+terraform init && terraform apply
+```
+
+You will be prompted to provide values for some required variables.
+
+3.  Using the pipeline 
+
+Make a change to a file in the src directory of your forked repository.  When a 
+change is merged on the main branch, navigate to the 
+[Cloud Build History](https://console.cloud.google.com/cloud-build/builds) page
+to observe the pipeline in action. 
+
 ## Contributing
 
 Contributions to this library are always welcome and highly encouraged.
