@@ -30,7 +30,7 @@ This demo runs on Google Cloud using the following services:
 
 Clone this repo and change directory (`cd`) to it.
 
-Install dependencies:
+### Install dependencies
 
 ```bash
 npm install
@@ -39,18 +39,7 @@ npm install
 > The repo's `package-lock.json` will be ignored by git if you
 > commit changes (configured in `.gitignore`).
 
-Run the development server:
-
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing pages. The browser auto-updates when you save changes.
-
-
-### If you want to run the Firestore Emulator locally
+### Run the Firestore Emulator
 
 Choose the port you want to use for the [Firestore Emulator], for example `9999`.
 
@@ -67,13 +56,23 @@ Start the emulator:
 ```bash
 gcloud emulators firestore start --host-port="$FIRESTORE_EMULATOR_HOST" --project=demo-test
 ```
-
 > When the exported `FIRESTORE_EMULATOR_HOST` environment variable is set, the
 > Firestore client will automatically use it to connect to the emulator.
 
 Press `Ctrl-C` when you want to stop the Firestore emulator.
 
 > For more detail, see the docs for [Emulate Firestore locally](https://cloud.google.com/firestore/docs/emulator).
+
+
+### Run the development server:
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+You can start editing pages. The browser auto-updates when you save changes.
 
 ## Tests
 
