@@ -9,7 +9,7 @@
     "lint": "next lint",
     "pretest:e2e": "playwright install",
     "test:e2e": "playwright test",
-    "test": "jest --verbose --detectOpenHandles",
+    "test": "FIRESTORE_EMULATOR_HOST=localhost:9999 jest --verbose --detectOpenHandles",
     "test:watch": "jest --verbose --detectOpenHandles --watch"
   },
   "dependencies": {
