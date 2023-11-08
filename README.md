@@ -63,6 +63,13 @@ Press `Ctrl-C` when you want to stop the Firestore emulator.
 
 > For more detail, see the docs for [Emulate Firestore locally](https://cloud.google.com/firestore/docs/emulator).
 
+### Set local development environment variables
+Copy the example `.env.local.example` file to a new file `.env.local`: 
+
+```bash
+cp .env.local.example .env.local
+```
+If neccessary, change any of the default values provided.
 
 ### Run the development server:
 
